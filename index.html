@@ -29,7 +29,7 @@
         /* HEADER */
         header {
             background: rgba(11, 15, 25, 0.95);
-            border-bottom: 2px solid rgba(0, 240, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 240, 255, 0.2);
             padding: 15px 5%;
             display: flex;
             justify-content: space-between;
@@ -37,7 +37,6 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.1);
         }
 
         .logo {
@@ -45,7 +44,7 @@
             font-weight: 800;
             letter-spacing: 2px;
             color: #00f0ff;
-            text-shadow: 0 0 12px rgba(0, 240, 255, 0.8);
+            text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
         }
 
         .logo span { color: #ffffff; }
@@ -56,9 +55,7 @@
             margin-left: 15px;
             font-weight: 600;
             font-size: 14px;
-            transition: color 0.3s;
         }
-        nav a:hover { color: #00f0ff; }
 
         /* MAIN PORTAL */
         #portalPage {
@@ -69,13 +66,13 @@
         }
 
         .hero {
-            padding: 50px 5% 30px 5%;
+            padding: 40px 5% 20px 5%;
             text-align: center;
-            background: radial-gradient(circle at center, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle at center, rgba(0, 240, 255, 0.12) 0%, transparent 70%);
         }
 
         .hero h1 {
-            font-size: 28px;
+            font-size: 30px;
             margin-bottom: 10px;
             background: linear-gradient(90deg, #ffffff, #00f0ff);
             -webkit-background-clip: text;
@@ -91,7 +88,7 @@
         }
 
         .container {
-            padding: 20px 5%;
+            padding: 25px 5%;
             width: 100%;
             max-width: 800px;
         }
@@ -102,7 +99,6 @@
             border-left: 4px solid #00f0ff;
             padding-left: 10px;
             color: #fff;
-            text-shadow: 0 0 10px rgba(0,240,255,0.4);
         }
 
         .games-grid {
@@ -118,35 +114,18 @@
             border-radius: 16px;
             width: 100%;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-        .game-card:hover {
-            border-color: #00f0ff;
-            transform: translateY(-3px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
         .game-banner {
             width: 100%;
-            height: 170px;
+            height: 160px;
             background: linear-gradient(135deg, #0f172a, #1e1b2e);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 60px;
             position: relative;
-            overflow: hidden;
-        }
-
-        /* Banner içi küçük animasyonlu gemi önizlemesi */
-        .preview-ship {
-            width: 50px;
-            height: 50px;
-            position: relative;
-            animation: floatShip 3s ease-in-out infinite;
-        }
-        @keyframes floatShip {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(2deg); }
         }
 
         .badge {
@@ -159,7 +138,6 @@
             border-radius: 20px;
             font-size: 11px;
             font-weight: 800;
-            box-shadow: 0 0 10px rgba(0,240,255,0.6);
         }
 
         .game-info {
@@ -191,13 +169,8 @@
             border-radius: 12px;
             font-size: 16px;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
             letter-spacing: 1px;
-            transition: opacity 0.2s, box-shadow 0.2s;
-        }
-        .btn-play:active {
-            opacity: 0.9;
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
         }
 
         /* FULLSCREEN GAME SECTION */
@@ -219,30 +192,28 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid rgba(0, 240, 255, 0.3);
+            border-bottom: 2px solid #00f0ff33;
         }
 
         #backBtn {
             color: #00f0ff;
-            background: rgba(0, 240, 255, 0.05);
+            background: none;
             border: 1px solid #00f0ff;
             padding: 6px 12px;
             border-radius: 12px;
             font-weight: bold;
             font-size: 12px;
             cursor: pointer;
-            box-shadow: 0 0 8px rgba(0,240,255,0.2);
         }
 
         .score-box {
             background: rgba(0, 240, 255, 0.1);
             border: 1px solid #00f0ff;
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 15px;
             font-weight: bold;
             color: #00f0ff;
             font-size: 12px;
-            box-shadow: 0 0 10px rgba(0,240,255,0.2);
         }
 
         #canvasContainer {
@@ -258,7 +229,7 @@
         canvas {
             background: #050711;
             border: 2px solid #00f0ff;
-            box-shadow: 0 0 25px rgba(0,240,255,0.3);
+            box-shadow: 0 0 20px rgba(0,240,255,0.2);
         }
 
         .controls {
@@ -268,22 +239,22 @@
             align-items: center;
             background: #0b0f19;
             padding: 10px;
-            border-top: 2px solid rgba(0, 240, 255, 0.3);
+            border-top: 2px solid #00f0ff33;
         }
 
         .ctrl-btn {
             background: linear-gradient(145deg, #151d30, #0b0f19);
             color: #00f0ff;
             border: 2px solid #00f0ff;
-            padding: 15px 30px;
+            padding: 15px 28px;
             border-radius: 14px;
             font-weight: bold;
-            font-size: 18px;
-            box-shadow: 0 0 12px rgba(0,240,255,0.3);
+            font-size: 20px;
+            box-shadow: 0 0 10px rgba(0,240,255,0.2);
         }
 
         .ctrl-btn:active {
-            transform: scale(0.93);
+            transform: scale(0.95);
             background: #00f0ff;
             color: #000;
         }
@@ -297,22 +268,19 @@
             justify-content: center;
             align-items: center;
             z-index: 10;
-            backdrop-filter: blur(5px);
         }
 
         #startBtn {
             background: linear-gradient(135deg, #00f0ff, #0072ff);
             color: #fff;
             border: none;
-            padding: 14px 40px;
+            padding: 14px 38px;
             font-size: 20px;
             font-weight: 800;
             border-radius: 25px;
             cursor: pointer;
-            box-shadow: 0 0 30px rgba(0,240,255,0.7);
-            transition: transform 0.2s;
+            box-shadow: 0 0 25px rgba(0,240,255,0.6);
         }
-        #startBtn:active { transform: scale(0.95); }
     </style>
 </head>
 <body>
@@ -337,14 +305,8 @@
             <div class="games-grid">
                 <div class="game-card">
                     <div class="game-banner">
-                        <!-- Roket Emojisi Yerine Şık Vektörel Gemi Animasyonu -->
-                        <div class="preview-ship">
-                            <svg viewBox="0 0 40 40" width="50" height="50">
-                                <polygon points="20,2 5,32 15,26 20,33 25,26 35,32" fill="#0f172a" stroke="#00f0ff" stroke-width="2"/>
-                                <ellipse cx="20" cy="18" rx="3" ry="6" fill="#00f0ff"/>
-                            </svg>
-                        </div>
-                        <span class="badge">YENİ 🚀</span>
+                        🚀
+                        <span class="badge" style="background: #00f0ff; color:#000;">YENİ</span>
                     </div>
                     <div class="game-info">
                         <h3 class="game-title">Cosmic Vanguard</h3>
@@ -367,7 +329,7 @@
         <div id="canvasContainer">
             <canvas id="gameCanvas"></canvas>
             <div id="startOverlay">
-                <h1 style="color: #00f0ff; margin-bottom: 8px; font-size: 28px; text-shadow: 0 0 20px #00f0ff;">COSMIC VANGUARD</h1>
+                <h1 style="color: #00f0ff; margin-bottom: 8px; font-size: 28px; text-shadow: 0 0 15px #00f0ff;">COSMIC VANGUARD</h1>
                 <p style="color: #94a3b8; margin-bottom: 25px; font-size: 13px;">YG Software Studio • Official Edition</p>
                 <button id="startBtn">OYUNA BAŞLA 🚀</button>
             </div>
@@ -381,6 +343,7 @@
     </div>
 
     <script>
+        // SAYFA GEÇİŞLERİ
         const portalPage = document.getElementById('portalPage');
         const gamePage = document.getElementById('gamePage');
 
@@ -397,6 +360,7 @@
             startOverlay.style.display = 'flex';
         }
 
+        // OYUN MOTORU
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         const scoreEl = document.getElementById('score');
@@ -413,12 +377,12 @@
         let shakeTime = 0;
         let stars = [], particles = [], shockwaves = [], bullets = [], enemies = [];
 
-        for(let i = 0; i < 60; i++) {
+        for(let i = 0; i < 50; i++) {
             stars.push({
                 x: Math.random() * 400,
                 y: Math.random() * 600,
-                size: Math.random() * 2.2 + 0.5,
-                speed: Math.random() * 2.5 + 0.5,
+                size: Math.random() * 2 + 0.5,
+                speed: Math.random() * 2 + 0.5,
                 alpha: Math.random()
             });
         }
@@ -428,53 +392,48 @@
             y: 0,
             width: 40,
             height: 40,
-            speed: 7
+            speed: 6.5
         };
 
         function drawPlayer() {
             ctx.save();
             ctx.translate(player.x + player.width/2, player.y + player.height/2);
 
-            // Gelişmiş İtici Motor Alevleri Efekti
-            if(gameRunning && Math.random() > 0.2) {
+            if(gameRunning && Math.random() > 0.3) {
                 particles.push({
-                    x: player.x + player.width/2 + (Math.random() - 0.5) * 8,
-                    y: player.y + player.height - 2,
+                    x: player.x + player.width/2 + (Math.random() - 0.5) * 6,
+                    y: player.y + player.height - 5,
                     vx: (Math.random() - 0.5) * 2,
-                    vy: Math.random() * 5 + 3,
-                    size: Math.random() * 3.5 + 1,
-                    color: Math.random() > 0.4 ? '#00f0ff' : '#ff0055',
-                    life: 14
+                    vy: Math.random() * 4 + 2,
+                    size: Math.random() * 3 + 1,
+                    color: Math.random() > 0.5 ? '#00f0ff' : '#ff0055',
+                    life: 12
                 });
             }
 
-            ctx.fillStyle = '#ff0055'; ctx.fillRect(-18, 10, 3, 3);
-            ctx.fillStyle = '#00f0ff'; ctx.fillRect(15, 10, 3, 3);
+            ctx.fillStyle = '#ff0055'; ctx.fillRect(-18, 8, 3, 3);
+            ctx.fillStyle = '#00f0ff'; ctx.fillRect(15, 8, 3, 3);
 
-            // Gemi Gövdesi Çizimi (Emoji Yerine Vektör Sanat)
             ctx.fillStyle = '#0f172a';
             ctx.strokeStyle = '#00f0ff';
-            ctx.lineWidth = 2.5;
-            ctx.shadowBlur = 12;
-            ctx.shadowColor = '#00f0ff';
+            ctx.lineWidth = 2;
             ctx.beginPath();
-            ctx.moveTo(0, -22);
-            ctx.lineTo(-20, 12);
-            ctx.lineTo(-9, 8);
-            ctx.lineTo(0, 18);
-            ctx.lineTo(9, 8);
-            ctx.lineTo(20, 12);
+            ctx.moveTo(0, -20);
+            ctx.lineTo(-18, 10);
+            ctx.lineTo(-8, 6);
+            ctx.lineTo(0, 15);
+            ctx.lineTo(8, 6);
+            ctx.lineTo(18, 10);
             ctx.closePath();
             ctx.fill();
             ctx.stroke();
 
-            // Gemi Kokpit Işıltısı
-            let grad = ctx.createLinearGradient(0, -10, 0, 5);
+            let grad = ctx.createLinearGradient(0, -8, 0, 4);
             grad.addColorStop(0, '#ffffff');
             grad.addColorStop(1, '#00f0ff');
             ctx.fillStyle = grad;
             ctx.beginPath();
-            ctx.ellipse(0, -4, 4, 9, 0, 0, Math.PI * 2);
+            ctx.ellipse(0, -3, 4, 8, 0, 0, Math.PI * 2);
             ctx.fill();
 
             ctx.restore();
@@ -485,7 +444,7 @@
             ctx.translate(e.x, e.y);
             ctx.rotate(e.angle);
 
-            ctx.shadowBlur = 12;
+            ctx.shadowBlur = 10;
             ctx.shadowColor = '#ff0055';
             ctx.fillStyle = '#1e1b2e';
             ctx.strokeStyle = '#ff0055';
@@ -504,17 +463,17 @@
         }
 
         function createExplosion(x, y) {
-            shakeTime = 8;
-            shockwaves.push({ x: x, y: y, radius: 5, alpha: 1 });
+            shakeTime = 6;
+            shockwaves.push({ x: x, y: y, radius: 4, alpha: 1 });
 
-            for (let i = 0; i < 18; i++) {
+            for (let i = 0; i < 15; i++) {
                 particles.push({
                     x: x, y: y,
-                    vx: (Math.random() - 0.5) * 8,
-                    vy: (Math.random() - 0.5) * 8,
-                    size: Math.random() * 4 + 1,
+                    vx: (Math.random() - 0.5) * 7,
+                    vy: (Math.random() - 0.5) * 7,
+                    size: Math.random() * 3.5 + 1,
                     color: ['#ff0055', '#ffaa00', '#00f0ff'][Math.floor(Math.random() * 3)],
-                    life: 25
+                    life: 20
                 });
             }
         }
@@ -523,13 +482,12 @@
             ctx.save();
 
             if (shakeTime > 0) {
-                ctx.translate((Math.random() - 0.5) * 7, (Math.random() - 0.5) * 7);
+                ctx.translate((Math.random() - 0.5) * 6, (Math.random() - 0.5) * 6);
                 shakeTime--;
             }
 
             ctx.clearRect(-10, -10, canvas.width + 20, canvas.height + 20);
 
-            // Yıldız Alanı Animasyonu
             stars.forEach(s => {
                 s.y += s.speed;
                 if(s.y > canvas.height) s.y = 0;
@@ -542,12 +500,10 @@
                 drawPlayer();
 
                 bullets.forEach((b, i) => {
-                    b.y -= 12;
+                    b.y -= 10;
                     ctx.fillStyle = '#00f0ff';
-                    ctx.shadowBlur = 8;
-                    ctx.shadowColor = '#00f0ff';
-                    ctx.fillRect(b.x - 1, b.y, 3, 14);
-                    ctx.fillRect(b.x + 10, b.y, 3, 14);
+                    ctx.fillRect(b.x - 1, b.y, 3, 12);
+                    ctx.fillRect(b.x + 10, b.y, 3, 12);
                     if (b.y < 0) bullets.splice(i, 1);
                 });
 
@@ -578,7 +534,7 @@
                     }
                 });
 
-                if (Math.random() < 0.045) {
+                if (Math.random() < 0.04) {
                     let rad = Math.random() * 10 + 12;
                     let pts = [];
                     for(let i=0; i<8; i++) {
@@ -593,28 +549,65 @@
                         points: pts,
                         angle: 0,
                         rotSpeed: (Math.random() - 0.5) * 0.05,
-                        speed: 2.2 + Math.random() * 2.5
+                        speed: 2 + Math.random() * 2.5
                     });
                 }
             }
 
-            // Şok Dalgaları Efekti
             shockwaves.forEach((sw, swi) => {
                 ctx.beginPath();
                 ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
                 ctx.strokeStyle = `rgba(0, 240, 255, ${sw.alpha})`;
-                ctx.lineWidth = 2.5;
+                ctx.lineWidth = 2;
                 ctx.stroke();
-                sw.radius += 2.5;
-                sw.alpha -= 0.05;
+                sw.radius += 2;
+                sw.alpha -= 0.06;
                 if(sw.alpha <= 0) shockwaves.splice(swi, 1);
             });
 
-            // Parçacık Efektleri
             particles.forEach((p, pi) => {
                 p.x += p.vx;
                 p.y += p.vy;
                 p.life--;
                 ctx.fillStyle = p.color;
                 ctx.fillRect(p.x, p.y, p.size, p.size);
-                if (
+                if (p.life <= 0) particles.splice(pi, 1);
+            });
+
+            if (moveLeft && player.x > 0) player.x -= player.speed;
+            if (moveRight && player.x < canvas.width - player.width) player.x += player.speed;
+
+            ctx.restore();
+            requestAnimationFrame(update);
+        }
+
+        let moveLeft = false, moveRight = false;
+        const leftBtn = document.getElementById('leftBtn');
+        const rightBtn = document.getElementById('rightBtn');
+
+        leftBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveLeft = true; });
+        leftBtn.addEventListener('touchend', () => moveLeft = false);
+        rightBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveRight = true; });
+        rightBtn.addEventListener('touchend', () => moveRight = false);
+
+        document.getElementById('fireBtn').onclick = () => {
+            if (!gameRunning) return;
+            bullets.push({ x: player.x + 8, y: player.y });
+        };
+
+        startBtn.onclick = () => {
+            score = 0;
+            scoreEl.innerText = score;
+            enemies = [];
+            bullets = [];
+            startOverlay.style.display = 'none';
+            gameRunning = true;
+        };
+
+        window.addEventListener('resize', resizeCanvas);
+        update();
+    </script>
+</body>
+    </html>
+    
+ 
