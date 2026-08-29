@@ -1,233 +1,1157 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <!-- GOOGLE SEARCH CONSOLE DOĞRULAMA KODU -->
-    <meta name="google-site-verification" content="oQ7GslXH8L64UG7_k2v8oVTdOxy7vUmwIwVIA0Ic4EU" />
+<meta name="google-site-verification" content="oQ7GslXH8L64UG7_k2v8oVTdOxy7vUmwIwVIA0Ic4EU">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>YG GAMES | Official Game Studio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            touch-action: manipulation;
-            user-select: none;
-        }
+<title>YG GAMES | Cyber Escape</title>
 
-        body {
-            background-color: #04060c;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Tahoma,Verdana,sans-serif;
+    user-select:none;
+}
 
-        /* HAREKETLİ ARKA PLAN AĞI (CANVAS) */
-        #bgCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-        }
+html,body{
+    width:100%;
+    min-height:100%;
+}
 
-        /* HEADER */
-        header {
-            background: rgba(8, 12, 22, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 2px solid rgba(0, 240, 255, 0.3);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+body{
+    background:#04060c;
+    color:#fff;
+    overflow-x:hidden;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: #00f0ff;
-            text-shadow: 0 0 15px rgba(0, 240, 255, 0.8);
-            animation: logoGlow 3s infinite alternate;
-        }
+/* =========================
+   ARKA PLAN
+========================= */
 
-        @keyframes logoGlow {
-            0% { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
-            100% { text-shadow: 0 0 25px rgba(0, 240, 255, 1), 0 0 35px rgba(0, 114, 255, 0.8); }
-        }
+#bgCanvas{
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100vh;
+    z-index:0;
+    pointer-events:none;
+}
 
-        .logo span { color: #ffffff; }
+/* =========================
+   PORTAL
+========================= */
 
-        nav a {
-            color: #94a3b8;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: 600;
-            font-size: 14px;
-            transition: 0.3s;
-        }
+#portalPage{
+    position:relative;
+    min-height:100vh;
+    z-index:10;
+}
 
-        nav a:hover {
-            color: #00f0ff;
-            text-shadow: 0 0 8px #00f0ff;
-        }
+header{
+    width:100%;
+    background:rgba(8,12,22,.88);
+    backdrop-filter:blur(12px);
+    border-bottom:2px solid rgba(0,240,255,.3);
+    padding:15px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
 
-        /* MAIN PORTAL */
-        #portalPage {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            z-index: 10;
-        }
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:2px;
+    color:#00f0ff;
+    text-shadow:0 0 15px rgba(0,240,255,.8);
+    animation:logoGlow 3s infinite alternate;
+}
 
-        .hero {
-            padding: 60px 5% 30px 5%;
-            text-align: center;
-        }
+.logo span{
+    color:#fff;
+}
 
-        .hero h1 {
-            font-size: 34px;
-            margin-bottom: 12px;
-            background: linear-gradient(90deg, #ffffff, #00f0ff, #ff0055);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientText 4s linear infinite;
-        }
+@keyframes logoGlow{
+    0%{
+        text-shadow:0 0 10px rgba(0,240,255,.5);
+    }
+    100%{
+        text-shadow:
+        0 0 25px rgba(0,240,255,1),
+        0 0 35px rgba(0,114,255,.8);
+    }
+}
 
-        @keyframes gradientText {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
+nav a{
+    color:#94a3b8;
+    text-decoration:none;
+    margin-left:15px;
+    font-weight:600;
+    font-size:13px;
+}
 
-        .hero p {
-            color: #94a3b8;
-            font-size: 14px;
-            max-width: 550px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
+nav a:hover{
+    color:#00f0ff;
+}
 
-        .container {
-            padding: 25px 5%;
-            width: 100%;
-            max-width: 850px;
-        }
+/* =========================
+   HERO
+========================= */
 
-        .section-title {
-            font-size: 20px;
-            margin-bottom: 25px;
-            border-left: 4px solid #00f0ff;
-            padding-left: 12px;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
-        }
+.hero{
+    padding:60px 5% 30px;
+    text-align:center;
+}
 
-        .empty-box {
-            background: rgba(17, 23, 38, 0.6);
-            border: 1px dashed rgba(0, 240, 255, 0.3);
-            border-radius: 18px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #94a3b8;
-            font-size: 15px;
-        }
-    </style>
+.hero h1{
+    font-size:34px;
+    margin-bottom:12px;
+    background:linear-gradient(
+        90deg,
+        #fff,
+        #00f0ff,
+        #ff0055,
+        #fff
+    );
+    background-size:200% auto;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradientText 4s linear infinite;
+}
+
+@keyframes gradientText{
+    0%{
+        background-position:0% center;
+    }
+    100%{
+        background-position:200% center;
+    }
+}
+
+.hero p{
+    color:#94a3b8;
+    font-size:14px;
+    max-width:550px;
+    margin:auto;
+    line-height:1.6;
+}
+
+/* =========================
+   OYUN KÜTÜPHANESİ
+========================= */
+
+.container{
+    padding:25px 5%;
+    width:100%;
+    max-width:850px;
+    margin:auto;
+}
+
+.section-title{
+    font-size:20px;
+    margin-bottom:25px;
+    border-left:4px solid #00f0ff;
+    padding-left:12px;
+    color:#fff;
+    text-shadow:0 0 10px rgba(0,240,255,.4);
+}
+
+.game-card{
+    background:linear-gradient(
+        145deg,
+        rgba(10,20,35,.95),
+        rgba(20,5,30,.95)
+    );
+    border:1px solid rgba(0,240,255,.45);
+    border-radius:18px;
+    padding:22px;
+    box-shadow:
+        0 0 25px rgba(0,240,255,.12),
+        inset 0 0 25px rgba(0,240,255,.03);
+    transition:.25s;
+}
+
+.game-card:hover{
+    transform:translateY(-3px);
+    box-shadow:
+        0 0 35px rgba(0,240,255,.25);
+}
+
+.game-icon{
+    width:70px;
+    height:70px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:38px;
+    background:rgba(0,240,255,.1);
+    border:2px solid #00f0ff;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.game-card h3{
+    color:#00f0ff;
+    font-size:23px;
+    margin-bottom:7px;
+}
+
+.game-card p{
+    color:#94a3b8;
+    font-size:14px;
+    line-height:1.5;
+    margin-bottom:18px;
+}
+
+.game-info{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+}
+
+.tag{
+    padding:5px 9px;
+    border-radius:6px;
+    border:1px solid rgba(0,240,255,.35);
+    color:#00f0ff;
+    background:rgba(0,240,255,.07);
+    font-size:11px;
+    font-weight:bold;
+}
+
+.play-btn{
+    width:100%;
+    padding:14px;
+    border:0;
+    border-radius:10px;
+    background:#00f0ff;
+    color:#000;
+    font-size:17px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 0 20px rgba(0,240,255,.4);
+}
+
+.play-btn:active{
+    transform:scale(.97);
+}
+
+/* =========================
+   GAME PAGE
+========================= */
+
+#gamePage{
+    display:none;
+    width:100vw;
+    min-height:100vh;
+    background:#020005;
+    justify-content:center;
+    align-items:center;
+}
+
+#gameContainer{
+    position:relative;
+    width:100vw;
+    max-width:420px;
+    height:100vh;
+    max-height:720px;
+    box-shadow:0 0 35px #00f3ff;
+    border:2px solid #00f3ff;
+    border-radius:16px;
+    overflow:hidden;
+    background:#080214;
+}
+
+#gameCanvas{
+    display:block;
+    width:100%;
+    height:100%;
+}
+
+#ui{
+    position:absolute;
+    top:15px;
+    left:15px;
+    right:15px;
+    display:flex;
+    justify-content:space-between;
+    color:#00f3ff;
+    font-size:14px;
+    font-weight:bold;
+    text-shadow:0 0 10px #00f3ff;
+    z-index:10;
+}
+
+/* ANA MENÜ BUTONU */
+
+#homeBtn{
+    position:absolute;
+    top:48px;
+    left:15px;
+    z-index:25;
+    padding:8px 12px;
+    border:1px solid #00f3ff;
+    border-radius:7px;
+    background:rgba(0,0,0,.6);
+    color:#00f3ff;
+    font-weight:bold;
+    font-size:12px;
+}
+
+/* =========================
+   LEVEL MENU
+========================= */
+
+#levelSelectMenu{
+    position:absolute;
+    inset:0;
+    background:rgba(8,2,20,.98);
+    z-index:40;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:25px 15px;
+    overflow-y:auto;
+}
+
+#levelSelectMenu h1{
+    color:#00f3ff;
+    text-shadow:0 0 15px #00f3ff;
+    font-size:24px;
+    margin-bottom:20px;
+}
+
+.level-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    width:100%;
+}
+
+.level-btn{
+    background:rgba(0,243,255,.1);
+    border:2px solid #00f3ff;
+    color:#00f3ff;
+    padding:15px 0;
+    border-radius:10px;
+    font-weight:bold;
+    font-size:16px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,243,255,.2);
+}
+
+.level-btn.locked{
+    border-color:#444;
+    color:#666;
+    background:rgba(255,255,255,.05);
+    box-shadow:none;
+}
+
+/* =========================
+   HİKAYE
+========================= */
+
+#storyBox{
+    position:absolute;
+    top:25%;
+    left:5%;
+    width:90%;
+    background:rgba(8,2,20,.96);
+    border:2px solid #00f3ff;
+    box-shadow:0 0 25px #00f3ff;
+    border-radius:12px;
+    padding:20px;
+    display:none;
+    flex-direction:column;
+    z-index:30;
+}
+
+#speaker{
+    color:#ff0055;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+#dialogue{
+    color:#fff;
+    font-size:15px;
+    line-height:1.4;
+    margin-bottom:15px;
+}
+
+.story-btn{
+    align-self:flex-end;
+    padding:10px 20px;
+    background:#00f3ff;
+    color:#000;
+    font-weight:bold;
+    border-radius:6px;
+    box-shadow:0 0 10px #00f3ff;
+}
+
+/* =========================
+   KONTROLLER
+========================= */
+
+#controls{
+    position:absolute;
+    bottom:25px;
+    left:20px;
+    right:20px;
+    display:flex;
+    justify-content:space-between;
+    z-index:20;
+}
+
+.btn{
+    width:46%;
+    padding:18px 0;
+    background:rgba(0,243,255,.2);
+    border:2px solid #00f3ff;
+    color:#00f3ff;
+    font-size:18px;
+    font-weight:800;
+    text-align:center;
+    border-radius:12px;
+    box-shadow:0 0 15px rgba(0,243,255,.4);
+}
+
+.btn-crouch{
+    background:rgba(255,0,85,.2);
+    border-color:#ff0055;
+    color:#ff0055;
+    box-shadow:0 0 15px rgba(255,0,85,.4);
+}
+</style>
 </head>
+
 <body>
 
-    <!-- ARKA PLAN ANİMASYON CANVAS'I -->
-    <canvas id="bgCanvas"></canvas>
+<!-- =====================================================
+     YG GAMES ARKA PLAN
+===================================================== -->
 
-    <!-- PORTAL EKRANI -->
-    <div id="portalPage">
-        <header style="width: 100%;">
-            <div class="logo">YG <span>GAMES</span></div>
-            <nav>
-                <a href="#games">Oyunlar</a>
-                <a href="https://www.youtube.com/@yg.games1" target="_blank">YouTube</a>
-                <a href="https://www.tiktok.com/@yg.sirket" target="_blank">TikTok</a>
-            </nav>
-        </header>
+<canvas id="bgCanvas"></canvas>
 
-        <section class="hero">
-            <h1>YG Software & Game Studio</h1>
-            <p>Yerli ve bağımsız yazılım teknolojilerini burada keşfedin. Doğrudan tarayıcınız üzerinden yüksek performansla oynayın!</p>
-        </section>
+<!-- =====================================================
+     PORTAL
+===================================================== -->
 
-        <main class="container" id="games">
-            <h2 class="section-title">Oyun Kütüphanesi</h2>
-            <div class="empty-box">
-                🕹️ Yeni projeler ve oyunlar çok yakında burada listelenecektir. Takipte kalın!
-            </div>
-        </main>
+<div id="portalPage">
+
+<header>
+    <div class="logo">
+        YG <span>GAMES</span>
     </div>
 
-    <script>
-        // ARKA PLAN DİNAMİK AĞ ANİMASYONU
-        const bgCanvas = document.getElementById('bgCanvas');
-        const bgCtx = bgCanvas.getContext('2d');
-        let bgDots = [];
+    <nav>
+        <a href="#games">Oyunlar</a>
+        <a href="https://www.youtube.com/@yg.games1" target="_blank">YouTube</a>
+        <a href="https://www.tiktok.com/@yg.sirket" target="_blank">TikTok</a>
+    </nav>
+</header>
 
-        function initBgAnimation() {
-            bgCanvas.width = window.innerWidth;
-            bgCanvas.height = window.innerHeight;
-            bgDots = [];
-            for (let i = 0; i < 45; i++) {
-                bgDots.push({
-                    x: Math.random() * bgCanvas.width,
-                    y: Math.random() * bgCanvas.height,
-                    vx: (Math.random() - 0.5) * 0.8,
-                    vy: (Math.random() - 0.5) * 0.8,
-                    size: Math.random() * 2 + 1
-                });
-            }
-        }
+<section class="hero">
+    <h1>YG Software & Game Studio</h1>
 
-        function drawBgAnimation() {
-            bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
-            for (let i = 0; i < bgDots.length; i++) {
-                let d = bgDots[i];
-                d.x += d.vx; d.y += d.vy;
-                if (d.x < 0 || d.x > bgCanvas.width) d.vx *= -1;
-                if (d.y < 0 || d.y > bgCanvas.height) d.vy *= -1;
+    <p>
+        Yerli ve bağımsız yazılım teknolojilerini burada keşfedin.
+        Doğrudan tarayıcınız üzerinden yüksek performansla oynayın!
+    </p>
+</section>
 
-                bgCtx.fillStyle = '#00f0ff';
+<main class="container" id="games">
+
+    <h2 class="section-title">
+        Oyun Kütüphanesi
+    </h2>
+
+    <div class="game-card">
+
+        <div class="game-icon">
+            🧬
+        </div>
+
+        <h3>
+            CYBER ESCAPE
+        </h3>
+
+        <p>
+            Neo, Vortex isimli yapay zekânın kontrolündeki
+            siber sistemden kaçmaya çalışıyor.
+            20 bölümlük neon koşu macerasına hazır mısın?
+        </p>
+
+        <div class="game-info">
+            <div class="tag">20 BÖLÜM</div>
+            <div class="tag">MOBİL</div>
+            <div class="tag">RUNNER</div>
+            <div class="tag">HTML5</div>
+            <div class="tag">YG GAMES</div>
+        </div>
+
+        <button class="play-btn" onclick="openGame()">
+            ▶ OYUNU BAŞLAT
+        </button>
+
+    </div>
+
+</main>
+
+</div>
+
+<!-- =====================================================
+     OYUN
+===================================================== -->
+
+<div id="gamePage">
+
+<div id="gameContainer">
+
+    <canvas id="gameCanvas" width="720" height="1280"></canvas>
+
+    <div id="ui">
+        <div>
+            BÖLÜM:
+            <span id="level">1/20</span>
+        </div>
+
+        <div>
+            SKOR:
+            <span id="score">0</span>/
+            <span id="target">500</span>
+        </div>
+
+        <div>
+            FPS:
+            <span id="fps">--</span>
+        </div>
+    </div>
+
+    <button id="homeBtn" onclick="backToPortal()">
+        ◀ YG GAMES
+    </button>
+
+    <!-- LEVEL MENÜ -->
+
+    <div id="levelSelectMenu">
+
+        <h1>
+            ⚡ BÖLÜM SEÇİMİ ⚡
+        </h1>
+
+        <div class="level-grid" id="levelGrid"></div>
+
+    </div>
+
+    <!-- STORY -->
+
+    <div id="storyBox">
+
+        <div id="speaker">
+            VORTEX (YAPAY ZEKA)
+        </div>
+
+        <div id="dialogue">
+            Sisteme izinsiz girdin Neo!
+        </div>
+
+        <div class="story-btn" id="btnNextStory">
+            BAŞLA ➔
+        </div>
+
+    </div>
+
+    <!-- CONTROLS -->
+
+    <div id="controls">
+
+        <div class="btn" id="btnJump">
+            ZIPLA ⬆️
+        </div>
+
+        <div class="btn btn-crouch" id="btnCrouch">
+            EĞİL ⬇️
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<script>
+
+/* =====================================================
+   PORTAL ARKA PLAN ANİMASYONU
+===================================================== */
+
+const bgCanvas = document.getElementById("bgCanvas");
+const bgCtx = bgCanvas.getContext("2d");
+
+let bgDots = [];
+
+function initBgAnimation(){
+
+    bgCanvas.width = window.innerWidth;
+    bgCanvas.height = window.innerHeight;
+
+    bgDots = [];
+
+    for(let i=0;i<45;i++){
+
+        bgDots.push({
+            x:Math.random()*bgCanvas.width,
+            y:Math.random()*bgCanvas.height,
+            vx:(Math.random()-.5)*.8,
+            vy:(Math.random()-.5)*.8,
+            size:Math.random()*2+1
+        });
+
+    }
+}
+
+function drawBgAnimation(){
+
+    bgCtx.clearRect(
+        0,
+        0,
+        bgCanvas.width,
+        bgCanvas.height
+    );
+
+    for(let i=0;i<bgDots.length;i++){
+
+        let d=bgDots[i];
+
+        d.x+=d.vx;
+        d.y+=d.vy;
+
+        if(d.x<0 || d.x>bgCanvas.width)
+            d.vx*=-1;
+
+        if(d.y<0 || d.y>bgCanvas.height)
+            d.vy*=-1;
+
+        bgCtx.fillStyle="#00f0ff";
+
+        bgCtx.beginPath();
+
+        bgCtx.arc(
+            d.x,
+            d.y,
+            d.size,
+            0,
+            Math.PI*2
+        );
+
+        bgCtx.fill();
+
+        for(let j=i+1;j<bgDots.length;j++){
+
+            let d2=bgDots[j];
+
+            let dist=Math.hypot(
+                d.x-d2.x,
+                d.y-d2.y
+            );
+
+            if(dist<120){
+
+                bgCtx.strokeStyle=
+                    `rgba(0,240,255,${1-dist/120})`;
+
+                bgCtx.lineWidth=.5;
+
                 bgCtx.beginPath();
-                bgCtx.arc(d.x, d.y, d.size, 0, Math.PI * 2);
-                bgCtx.fill();
 
-                for (let j = i + 1; j < bgDots.length; j++) {
-                    let d2 = bgDots[j];
-                    let dist = Math.hypot(d.x - d2.x, d.y - d2.y);
-                    if (dist < 120) {
-                        bgCtx.strokeStyle = `rgba(0, 240, 255, ${1 - dist / 120})`;
-                        bgCtx.lineWidth = 0.5;
-                        bgCtx.beginPath();
-                        bgCtx.moveTo(d.x, d.y);
-                        bgCtx.lineTo(d2.x, d2.y);
-                        bgCtx.stroke();
-                    }
-                }
+                bgCtx.moveTo(d.x,d.y);
+                bgCtx.lineTo(d2.x,d2.y);
+
+                bgCtx.stroke();
             }
-            requestAnimationFrame(drawBgAnimation);
+        }
+    }
+
+    requestAnimationFrame(drawBgAnimation);
+}
+
+initBgAnimation();
+drawBgAnimation();
+
+window.addEventListener(
+    "resize",
+    initBgAnimation
+);
+
+
+/* =====================================================
+   SAYFA GEÇİŞLERİ
+===================================================== */
+
+const portalPage =
+    document.getElementById("portalPage");
+
+const gamePage =
+    document.getElementById("gamePage");
+
+function openGame(){
+
+    portalPage.style.display="none";
+    gamePage.style.display="flex";
+
+    renderLevelMenu();
+
+}
+
+function backToPortal(){
+
+    isPaused=true;
+    gameOver=true;
+
+    gamePage.style.display="none";
+    portalPage.style.display="block";
+
+}
+
+
+/* =====================================================
+   OYUN
+===================================================== */
+
+const canvas =
+    document.getElementById("gameCanvas");
+
+const ctx =
+    canvas.getContext("2d");
+
+const targetEl =
+    document.getElementById("target");
+
+const scoreEl =
+    document.getElementById("score");
+
+const levelEl =
+    document.getElementById("level");
+
+const fpsEl =
+    document.getElementById("fps");
+
+const storyBox =
+    document.getElementById("storyBox");
+
+const speakerEl =
+    document.getElementById("speaker");
+
+const dialogueEl =
+    document.getElementById("dialogue");
+
+const btnNextStory =
+    document.getElementById("btnNextStory");
+
+const levelSelectMenu =
+    document.getElementById("levelSelectMenu");
+
+const levelGrid =
+    document.getElementById("levelGrid");
+
+
+/* =====================================================
+   DEĞİŞKENLER
+===================================================== */
+
+let maxUnlockedLevel=1;
+let currentLevel=1;
+let score=0;
+let gameOver=false;
+let isPaused=true;
+let frame=0;
+let lastTime=performance.now();
+
+const GROUND_Y=960;
+
+
+/* =====================================================
+   HİKAYE
+===================================================== */
+
+const storyData={
+
+1:{
+speaker:"VORTEX (AVCI AI)",
+text:"Sisteme izinsiz girdin Neo! Sektör 1'den canlı çıkamayacaksın!"
+},
+
+2:{
+speaker:"NEO (SEN)",
+text:"Siber güvenlik duvarı sertleşiyor. Hızlanmam lazım!"
+},
+
+3:{
+speaker:"VORTEX (AVCI AI)",
+text:"Ağ katmanları arasına tuzaklar kurdum. Kaçamazsın!"
+},
+
+4:{
+speaker:"NEO (SEN)",
+text:"Lazer engelleri aşıyorum... Ana işlemciye yaklaşıyorum!"
+},
+
+5:{
+speaker:"VORTEX (AVCI AI)",
+text:"Geniş Lazer Bloklarını aktif ettim! Onu durdurun!"
+},
+
+6:{
+speaker:"NEO (SEN)",
+text:"Sistem hızlandı ama ben daha hızlıyım Vortex!"
+},
+
+7:{
+speaker:"VORTEX (AVCI AI)",
+text:"Sensörlerimi atlatabileceğini mi sanıyorsun mortal?"
+},
+
+8:{
+speaker:"NEO (SEN)",
+text:"Yolun yarısına az kaldı, vazgeçmek yok!"
+},
+
+9:{
+speaker:"VORTEX (AVCI AI)",
+text:"Veri paketlerin silinecek Neo! Dur artık!"
+},
+
+10:{
+speaker:"NEO (SEN)",
+text:"Çekirdeğe ulaştım! Şehrin yarısı özgürleşiyor!"
+},
+
+11:{
+speaker:"VORTEX (AVCI AI)",
+text:"Siber Dikenler devreye girdi! Adımına dikkat et!"
+},
+
+12:{
+speaker:"NEO (SEN)",
+text:"Engeller sıklaştı ama ritmi yakaladım."
+},
+
+13:{
+speaker:"VORTEX (AVCI AI)",
+text:"İmkansız! Tüm algoritmalarımı boşa çıkarıyorsun!"
+},
+
+14:{
+speaker:"NEO (SEN)",
+text:"Sisteminde açıklar var Vortex, sonun yaklaştı!"
+},
+
+15:{
+speaker:"VORTEX (AVCI AI)",
+text:"Son savunma hattımı geçemezsin!"
+},
+
+16:{
+speaker:"NEO (SEN)",
+text:"Az kaldı... Son 4 sektör!"
+},
+
+17:{
+speaker:"VORTEX (AVCI AI)",
+text:"Sistem aşırı ısındı! Dur Neo!"
+},
+
+18:{
+speaker:"NEO (SEN)",
+text:"Şehir uyanıyor, senin devrin bitiyor!"
+},
+
+19:{
+speaker:"VORTEX (AVCI AI)",
+text:"KODLARIM BÖLÜNÜYOR... HAYIRRR!"
+},
+
+20:{
+speaker:"NEO (SEN)",
+text:"Ana sunucudayım! Vortex, fişini çekme vakti!"
+}
+
+};
+
+
+/* =====================================================
+   OYUNCU
+===================================================== */
+
+const player={
+
+x:220,
+
+y:GROUND_Y-110,
+
+width:40,
+
+height:110,
+
+dy:0,
+
+gravity:1.2,
+
+jumpPower:-23,
+
+grounded:false,
+
+isCrouching:false
+
+};
+
+const chaser={
+
+x:60,
+
+y:GROUND_Y-110,
+
+width:40,
+
+height:110
+
+};
+
+let obstacles=[];
+
+
+/* =====================================================
+   LEVEL MENÜ
+===================================================== */
+
+function renderLevelMenu(){
+
+    levelGrid.innerHTML="";
+
+    for(let i=1;i<=20;i++){
+
+        let btn=document.createElement("div");
+
+        btn.className=
+            "level-btn "+
+            (i>maxUnlockedLevel?"locked":"");
+
+        btn.innerText=
+            i>maxUnlockedLevel
+            ? `🔒 ${i}`
+            : `Bölüm ${i}`;
+
+        if(i<=maxUnlockedLevel){
+
+            btn.onclick=()=>{
+                startLevel(i);
+            };
+
         }
 
-        initBgAnimation();
-        drawBgAnimation();
+        levelGrid.appendChild(btn);
+    }
+}
 
-        window.addEventListener('resize', initBgAnimation);
-    </script>
-</body>
-</html>
+
+/* =====================================================
+   LEVEL BAŞLAT
+===================================================== */
+
+function startLevel(lvl){
+
+    currentLevel=lvl;
+
+    score=0;
+
+    obstacles=[];
+
+    player.y=
+        GROUND_Y-110;
+
+    player.dy=0;
+
+    player.grounded=true;
+
+    player.isCrouching=false;
+
+    chaser.x=60;
+
+    gameOver=false;
+
+    levelSelectMenu.style.display="none";
+
+    levelEl.innerText=
+        `${currentLevel}/20`;
+
+    targetEl.innerText=
+        `${currentLevel*500}`;
+
+    scoreEl.innerText="0";
+
+    showStory(
+        storyData[currentLevel].speaker,
+        storyData[currentLevel].text
+    );
+}
+
+
+/* =====================================================
+   HİKAYE GÖSTER
+===================================================== */
+
+function showStory(speaker,text){
+
+    isPaused=true;
+
+    speakerEl.innerText=speaker;
+
+    dialogueEl.innerText=text;
+
+    storyBox.style.display="flex";
+}
+
+
+/* =====================================================
+   HİKAYE DEVAM
+===================================================== */
+
+btnNextStory.addEventListener(
+"click",
+()=>{
+
+    storyBox.style.display="none";
+
+    isPaused=false;
+
+    lastTime=performance.now();
+
+    requestAnimationFrame(update);
+
+});
+
+
+/* =====================================================
+   ZIPLAMA
+===================================================== */
+
+function doJump(){
+
+    if(gameOver){
+
+        levelSelectMenu.style.display="flex";
+
+        renderLevelMenu();
+
+        return;
+    }
+
+    if(
+        player.grounded &&
+        !isPaused
+    ){
+
+        player.dy=
+            player.jumpPower;
+
+        player.grounded=false;
+
+    }
+}
+
+
+/* =====================================================
+   EĞİLME
+===================================================== */
+
+function setCrouch(state){
+
+    if(gameOver || isPaused)
+        return;
+
+    player.isCrouching=state;
+}
+
+
+/* =====================================================
+   MOBİL KONTROLLER
+===================================================== */
+
+document
+.getElementById("btnJump")
+.addEventListener(
+"touchstart",
+e=>{
+    e.preventDefault();
+    doJump();
+});
+
+
+document
+.getElementById("btnCrouch")
+.addEventListener(
+"touchstart",
+e=>{
+    e.preventDefault();
+    setCrouch(true);
+});
+
+
+document
+.getElementById("btnCrouch")
+.addEventListener(
+"touchend",
+e=>{
+    e.preventDefault();
+    setCrouch(false);
+});
+
+
+/* =====================================================
+   KLAVYE
+===================================================== */
+
+window.addEventListener(
+"keydown",
+e=>{
+
+    if(
+        e.code==="Space" ||
+        e.code==="ArrowUp"
+    )
+        doJump();
+
+    if(
+        e.code==="ArrowDown" ||
+        e.code==="KeyS"
+    )
+        setCrouch(true);
+
+});
+
+
+window.addEventListener(
+"keyup",
+e=>{
+
+    if(
+        e.code==="ArrowDown" ||
+        e.code==="KeyS"
+    )
+        setCrouch(false);
+
+});
+
+
+/* =====================================================
+   İNSAN ANİMASYONU
+===================================================== *
